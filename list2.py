@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Jasmyne Ford with help from Ceasar Ramos and Greg Spurgeon"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -29,7 +29,11 @@ __author__ = "???"
 
 def remove_adjacent(nums):
     # your code here
-    return
+    results = []
+    for num in nums:
+        if len(results) == 0 or num != results[-1]:
+            results.append(num)
+    return results
 
 
 # E. zip_merge
@@ -43,9 +47,12 @@ def remove_adjacent(nums):
 
 
 def zip_merge(list1, list2):
-    # your code here
-    return
+    new_list = zip(list1, list2)
+    final_list = []
+    for n in new_list:
+        final_list.append("".join(n))
 
+    return final_list
 
 # F. empty_filter
 # Given a single list containing strings, empty strings, and
@@ -57,8 +64,8 @@ def zip_merge(list1, list2):
 
 
 def empty_filter(list1):
-    # your code here
-    return
+    new_list = list(filter(None, list1))
+    return (new_list)
 
 
 # G. linear_merge
@@ -73,8 +80,16 @@ def empty_filter(list1):
 
 
 def linear_merge(list1, list2):
+    results = []
+    while len(list1) and len(list2):
+        if list1[0] < list2[0]:
+            results.append(list1.pop(0))
+        else:
+            results.append(list2.pop(0))
     # your code here
-    return
+    results.extend(list1)
+    results.extend(list2)
+    return results
 
 
 # Provided simple test() function used in main() to print
